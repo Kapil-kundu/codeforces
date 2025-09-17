@@ -1,3 +1,35 @@
+/*
+Problem link: https://codeforces.com/contest/893/problem/C
+Problem Name: Rumor 
+
+Description: 
+	Vova knows that there are n characters in Overcity. Some characters are friends to each other,
+ 	and they share information they got. Also Vova knows that he can bribe each character so he or 
+  	she starts spreading the rumor; i-th character wants ci gold in exchange for spreading the rumor.
+   	When a character hears the rumor, he tells it to all his friends, and they start spreading the
+	rumor to their friends (for free), and so on.
+
+	The quest is finished when all n characters know the rumor. What is the minimum amount of
+ 	gold Vova needs to spend in order to finish the quest?
+
+	Take a look at the notes if you think you haven't understood the problem 
+ 	completely.
+
+  	$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+								Logic ---> 
+
+  	This is a graph components problem, In this problem we are given some graph components
+   	and we have to find minimum amount of gold from each component and at last we have to sum 
+	all minimum amount of gold we have 
+
+ 	For this problem : 	
+  	we use dfs for each component and find minimum amount of gold from each component
+   
+	$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+
+*/
+
 import java.util.*;
  
 public class C {
