@@ -1,3 +1,50 @@
+/*
+Problem Link : https://codeforces.com/contest/2112/problem/D
+Problem Name : Reachability and Tree
+
+Description : 
+		In this problem we are given are a undirected graph and we have to make it 
+		directed graph such that we have exactly n(number of vertices) paths.
+		and if there is no such path we have to print "NO".
+
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+				Logic : 
+
+	For this problem if we have not a vertex with degree 2 than there is no possibilites
+	to make that graph directed, else if we have a verted with degree 2 than for that particular node 
+	we directed the one child to that node(node with degree 2) and the second child will be directed
+	from the node and for all of the remaining nodes we directed all edges in opposite to each other 
+
+	example :
+	graph -> 
+		[5]---[3]---[1]---[2]---[4]
+
+		in this graph we have 2 nodes with degree 2 (node 2, 1, and 2)
+		for this we select node 3, we direct the edge 3 to 5 and node 
+		1 will point to 3 
+
+		graph will become ->   [5] <--[3] <--[1]---[2]--[4]
+
+		after this we will direct all edges opposite to each other
+		graph will become -> [5] <--[3] <--[1] -->[2] <--[4]
+
+		output :
+			3 5
+			1 3
+			1 2
+			4 2
+		there is exactly n(5) paths 
+		5 to 3
+		1 to 3
+		1 to 5
+		1 to 2
+		4 to 2
+
+*/
+
+
 import java.util.*;
 
 public class D {
