@@ -1,40 +1,44 @@
-import java.util.*;
+import java.util.Scanner;
 
 public class C {
-    public static void main(String[] arsg) {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int t = sc.nextInt();
-        while(t-- > 0) {
+
+        while (t-- > 0) {
             int n = sc.nextInt();
             int q = sc.nextInt();
-            int arr[] = new int[n];
-            for(int i = 0; i < n; i++) {
-                int ignore = sc.nextInt();
-            }
-            for(int i = 0; i < n; i++) {
-                arr[i] = sc.nextInt();
-            }
-            int maxPre[] = new int[n];
-            maxPre[n - 1] = arr[n - 1];
-            for(int i = n - 2; i >= 0; i--) {
-                maxPre[i] = Math.max(arr[i], maxPre[i + 1]);
+
+            int[] a = new int[n];
+            int[] b = new int[n];
+
+            for (int i = 0; i < n; i++) a[i] = sc.nextInt();
+            for (int i = 0; i < n; i++) b[i] = sc.nextInt();
+
+            int[] temp = new int[n];
+
+            // build temp array
+            temp[n - 1] = Math.max(a[n - 1], b[n - 1]);
+            for (int i = n - 2; i >= 0; i--) {
+                temp[i] = Math.max(a[i], b[i]);
+                temp[i] = Math.max(temp[i], temp[i + 1]);
             }
 
-           
-            
-            for(int i = 0; i < q; i++) {
-                 int sum = 0;
-                int a = sc.nextInt();
-                int b = sc.nextInt();
-                a -= 1;
-                b -= 1;
-                for(int j = a; j <= b; j++) {
-                    sum += maxPre[j];
-                }
+            // build prefix sum
+            long[] prefix = new long[n];
+            prefix[0] = temp[0];
+            for (int i = 1; i < n; i++) {
+                prefix[i] = prefix[i - 1] + temp[i];
+            }
+
+            // answer queries in O(1)
+            while (q-- > 0) {
+                int c = sc.nextInt() - 1;
+                int d = sc.nextInt() - 1;
+
+                long sum = prefix[d] - (c > 0 ? prefix[c - 1] : 0);
                 System.out.println(sum);
-
             }
         }
-
     }
 }
